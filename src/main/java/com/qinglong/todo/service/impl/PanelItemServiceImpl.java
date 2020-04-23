@@ -1,24 +1,26 @@
 package com.qinglong.todo.service.impl;
 
-import com.qinglong.todo.dao.Panel_itemDao;
-import com.qinglong.todo.entity.Item;
-import com.qinglong.todo.entity.Panel_Item;
-import com.qinglong.todo.service.Panel_itemService;
+import com.qinglong.todo.dao.PanelItemDao;
+import com.qinglong.todo.entity.PanelItem;
+import com.qinglong.todo.service.PanelItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author 84647
+ */
 @Service
-public class Panel_itemServiceImpl implements Panel_itemService {
+public class PanelItemServiceImpl implements PanelItemService {
     @Autowired
-    private Panel_itemDao piDao;
+    private PanelItemDao piDao;
 
     /**
      * 查找所有panel_item
      */
     @Override
-    public List<Panel_Item> findAll() {
+    public List<PanelItem> findAll() {
         return piDao.findAll();
     }
 
@@ -26,17 +28,16 @@ public class Panel_itemServiceImpl implements Panel_itemService {
      * 通过id查找panel_item
      */
     @Override
-    public Panel_Item findById(int id) {
+    public PanelItem findById(int id) {
         return piDao.findById(id);
     }
-
 
 
     /**
      * 增加panel_item
      */
     @Override
-    public int add(Panel_Item pi) {
+    public int add(PanelItem pi) {
         return piDao.add(pi);
     }
 
@@ -44,7 +45,7 @@ public class Panel_itemServiceImpl implements Panel_itemService {
      * 修改panel_item
      */
     @Override
-    public int update(Panel_Item pi) {
+    public int update(PanelItem pi) {
         return piDao.update(pi);
     }
 

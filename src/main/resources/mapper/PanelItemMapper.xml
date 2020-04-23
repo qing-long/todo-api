@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.qinglong.todo.dao.Panel_itemDao">
-    <resultMap id="BaseResultMap" type="com.qinglong.todo.entity.Panel_Item">
+<mapper namespace="com.qinglong.todo.dao.PanelItemDao">
+    <resultMap id="BaseResultMap" type="com.qinglong.todo.entity.PanelItem">
         <result column="id" property="id"/>
         <result column="panel_id" property="panelId"/>
         <result column="item_id" property="itemId"/>
@@ -9,7 +9,7 @@
         <result column="update_time" property="updateTime"/>
     </resultMap>
 
-    <parameterMap id="Panel_Item" type="com.qinglong.todo.entity.Panel_Item"/>
+    <parameterMap id="Panel_Item" type="com.qinglong.todo.entity.PanelItem"/>
 
     <sql id="Base_Column_List">
         id, panel_id,item_id,create_time,update_time
@@ -29,13 +29,13 @@
 
     </select>
 
-    <insert id="add" parameterType="com.qinglong.todo.entity.Panel_Item">
+    <insert id="add" parameterType="com.qinglong.todo.entity.PanelItem">
         insert
         into panel_item
        values (#{id},#{panelId},#{itemId},#{createTime},#{updateTime})
     </insert>
 
-    <update id="update" parameterType="com.qinglong.todo.entity.Panel_Item">
+    <update id="update" parameterType="com.qinglong.todo.entity.PanelItem">
        update panel_item
        set
        id=#{id},panel_id=#{panelId},item_id=#{itemId},create_time=#{createTime},update_time=#{updateTime}

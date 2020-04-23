@@ -1,49 +1,45 @@
 package com.qinglong.todo.service;
 
-import com.qinglong.todo.entity.Item;
+import com.qinglong.todo.entity.PanelItem;
 
 import java.util.List;
 
-/**
- * @author 廖高兴
- */
-public interface ItemService {
+public interface PanelItemService {
     /**
      * 找到所有Item
      *
-     * @return 返回Item的list集合
+     * @return 返回查找到的Panel_Item集合
      */
-    List<Item> findAll();
+    List<PanelItem> findAll();
 
     /**
      * 通过id找到Item
      *
-     * @param id item.id
-     * @return 返回通过id查找到的Item对象
+     * @param id 传入PanelItem.id
+     * @return 返回通过id查找到的PanelItem
      */
-    Item findById(int id);
-
+    PanelItem findById(int id);
 
     /**
      * 增加item,成功返回1失败返回0
      *
-     * @param item 传入的item对象参数
+     * @param pi 传入PanelItem
      * @return 成功返回1失败返回0
      */
-    int add(Item item);
+    int add(PanelItem pi);
 
     /**
      * 修改item
      *
-     * @param item 传入修改的item
+     * @param pi 传入PanelItem
      * @return 成功返回1失败返回0
      */
-    int update(Item item);
+    int update(PanelItem pi);
 
     /**
      * 删除item
      *
-     * @param id 传入要删除的item.id
+     * @param id 传入PanelItem.id
      * @return 成功返回1失败返回0
      */
     int delete(int id);
@@ -51,8 +47,8 @@ public interface ItemService {
     /**
      * 删除panle下的所有item
      *
-     * @param panelId 传入要删除的item的对应panelId
+     * @param id 传入panel.id
      * @return 成功返回1失败返回0
      */
-    int deleteAll(int panelId);
+    int deleteAll(int id);
 }

@@ -2,7 +2,7 @@ package com.qinglong.todo.entity;
 
 import java.util.Date;
 
-public class Panel_Item {
+public class PanelItem {
     private int id;
     private int panelId;
     private int itemId;
