@@ -2,7 +2,6 @@ package com.qinglong.todo.dao;
 
 import com.qinglong.todo.entity.Panel;
 import org.apache.ibatis.annotations.*;
-
 import java.util.List;
 
 /**
@@ -10,11 +9,18 @@ import java.util.List;
  */
 @Mapper
 public interface PanelDao {
+    @Results(
+            id = "panelMap", value = {
+            @Result(property = "id", column = "id", id = true),
+            @Result(property = "name", column = "name"),
+            @Result(property = "createTime", column = "create_time"),
+            @Result(property = "updateTime", column = "update_time")
+    }
+    )
     /**
-     * 测试例子
-     *
-     * @return 看能否返回数据成功
+     * @return  返回找到的id为2的panel
      */
+    @Select("select * from panel where id=2")
     Panel find();
 
     /**
@@ -23,6 +29,7 @@ public interface PanelDao {
      * @return 返回Panel集合
      */
     @Select("select * from panel")
+    @ResultMap("panelMap")
     List<Panel> findAll();
 
     /**
@@ -40,7 +47,7 @@ public interface PanelDao {
      * @param p 要添加的panel对象
      * @return 成功返回1失败返回0
      */
-    @Insert("insert into panel values(#{p.id},#{p.name},#{p.createTime},#{p.updateTime})")
+    @Insert("insert into panel values(#{id},#{name},#{createTime},#{updateTime})")
     int add(Panel p);
 
     /**
@@ -49,7 +56,7 @@ public interface PanelDao {
      * @param p 传入要更新的panel
      * @return 成功返回1失败返回0
      */
-    @Update("update panel set id=#{p.id},name=#{p.name},create_time=#{p.createTime],update_time=#{p.updateTime}")
+    @Update("update panel set name=#{name},update_time=#{updateTime} where id=#{id}")
     int update(Panel p);
 
     /**
@@ -60,6 +67,4 @@ public interface PanelDao {
      */
     @Delete("delete from panel where id=#{id}")
     int delete(int id);
-
-
 }

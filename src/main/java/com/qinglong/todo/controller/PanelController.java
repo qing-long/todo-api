@@ -3,16 +3,16 @@ package com.qinglong.todo.controller;
 import com.qinglong.todo.entity.Panel;
 import com.qinglong.todo.service.PanelService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 /**
  * @author 廖高兴
  */
-@RestController
+@Controller
 public class PanelController {
 
     @Autowired
@@ -21,7 +21,7 @@ public class PanelController {
     @RequestMapping(value = "/GET", method = RequestMethod.GET)
     public String find() {
         Panel p = panelService.find();
-        return p.getCreateTime().toString();
+        return p.toString();
     }
 
     /**
@@ -29,41 +29,57 @@ public class PanelController {
      *
      * @return 返回Panel集合
      */
-    @RequestMapping(value = "/GET/panel", method = RequestMethod.GET)
-    public List<Panel> findAll() {
-        return panelService.findAll();
+    @RequestMapping(value = "/panel", method = RequestMethod.GET)
+    public ModelAndView findAll()
+    {
+        ModelAndView model=new ModelAndView("index");
+        List<Panel> panelList=panelService.findAll();
+        model.addObject("panelList",panelList);
+        return model;
     }
 
     /**
      * 通过id查找panel
      */
 
-    @RequestMapping(value = "/GET/panel/id", method = RequestMethod.GET)
-    public Panel findById(int id) {
-        return panelService.findById(id);
+    @RequestMapping(value = "/panel/{id}", method = RequestMethod.GET)
+    public ModelAndView findById(@PathVariable  int id) {
+        ModelAndView model=new ModelAndView("success");
+        Panel p= panelService.findById(id);
+        model.addObject("panel",p);
+        return model;
     }
 
     /**
      * 添加panel
      */
-    @RequestMapping(value = "/POST/panel", method = RequestMethod.POST)
-    public int add(Panel p) {
-        return panelService.add(p);
+    @RequestMapping(value = "/panel", method = RequestMethod.POST)
+    public ModelAndView add(Panel p) {
+        ModelAndView model=new ModelAndView("success");
+              panelService.add(p);
+            Panel panel=  panelService.findById(p.getId());
+              model.addObject("panel",panel);
+              return model;
     }
 
     /**
      * 更新panel
      */
-    @RequestMapping(value = "/PUT/panel", method = RequestMethod.PUT)
-    public int update(Panel p) {
-        return panelService.update(p);
+    @RequestMapping(value = "/panel", method = RequestMethod.PUT)
+    @ResponseBody
+    public String update( Panel p) {
+        System.out.println(p.getId()+","+p.getName()+","+p.getUpdateTime()+"1111111111111111111111111111");
+         panelService.update(p);
+         return "success";
     }
 
     /**
      * 删除panel
      */
-    @RequestMapping(value = "/DELETE/panel/id", method = RequestMethod.DELETE)
-    public int delete(int id) {
-        return panelService.delete(id);
+    @RequestMapping(value = "/panel/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable  int id) {
+        panelService.delete(id);
+        return "success";
     }
+
 }

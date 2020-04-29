@@ -55,4 +55,6 @@ public interface ItemService {
      * @return 成功返回1失败返回0
      */
     int deleteAll(int panelId);
+
+    String findName(int id);
 }

@@ -1,5 +1,6 @@
 package com.qinglong.todo.service;
 
+import com.qinglong.todo.entity.Item;
 import com.qinglong.todo.entity.PanelItem;
 
 import java.util.List;
@@ -51,4 +52,6 @@ public interface PanelItemService {
      * @return 成功返回1失败返回0
      */
     int deleteAll(int id);
+
+    List<Item> findItemByPanel(int panelId);
 }

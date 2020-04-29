@@ -10,7 +10,6 @@ public class Item {
     private Date createTime;
     private Date updateTime;
 
-
     public int getId() {
         return id;
     }
@@ -70,4 +69,5 @@ public class Item {
                 ", updateTime=" + updateTime +
                 '}';
     }
+
 }

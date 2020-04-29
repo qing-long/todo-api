@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        .div1 {
+            height: 300px;
+            width: 10%;
+            background-color: green;
+            float: left;
+        }
+
+        .div2 {
+            height: 300px;
+            width: 35%;
+            background-color: red;
+            float: left;
+        }
+
+        .div3 {
+            height: 30px;
+            width: 200px;
+            background-color: yellow;
+            float: bottom;
+        }
+
+        .div4 {
+            height: 300px;
+            width: 5%;
+            background-color: blue;
+            float: left;
+        }
+
+    </style>
+</head>
+<script>
+</script>
+<body>
+<!--
+<ul>
+
+    <tr th:each="map1:${mapAll}"><a th:text="${map1.getKey().name}"></a>
+
+        <td>
+            <li th:each="map2:${map1.getValue()}"><a th:text="${map2.description}"></a></li>
+        </td>
+    </tr>
+</ul>
+-->
+<tr th:each="map1: ${mapAll}" }>
+    <td>
+        <div class="div1">
+            <div style="text-align: center;"><p th:text="${map1.getKey().name}"></p>
+            </div>
+        </div>
+    </td>
+    <td>
+        <div class="div2">
+            <ol>
+            <li th:each="map2:${map1.getValue()}">
+                <div class="div3"> <span th:text="${map2.name}"></span>
+                    <span th:text="${map2.image}"></span>
+                    <span th:text="${map2.description}"></span>
+                    <span><a href="add.html">添加</a></span>
+                    <span><a href="/DELETE/item">删除</a></span>
+                </div>
+                </li>
+            </ol>
+        </div>
+    </td>
+
+</body>
+</html>

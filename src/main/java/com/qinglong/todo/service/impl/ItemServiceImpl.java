@@ -5,7 +5,6 @@ import com.qinglong.todo.entity.Item;
 import com.qinglong.todo.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 /**
@@ -60,5 +59,10 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public int deleteAll(int panelId) {
         return itemDao.deleteAll(panelId);
+    }
+
+    @Override
+    public String findName(int id){
+        return itemDao.findName(id);
     }
 }

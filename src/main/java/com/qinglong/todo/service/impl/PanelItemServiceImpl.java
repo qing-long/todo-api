@@ -1,6 +1,7 @@
 package com.qinglong.todo.service.impl;
 
 import com.qinglong.todo.dao.PanelItemDao;
+import com.qinglong.todo.entity.Item;
 import com.qinglong.todo.entity.PanelItem;
 import com.qinglong.todo.service.PanelItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,5 +64,11 @@ public class PanelItemServiceImpl implements PanelItemService {
     @Override
     public int deleteAll(int id) {
         return piDao.deleteAll(id);
+    }
+
+    @Override
+    public List<Item> findItemByPanel(int panelId){
+        List<Item> list=piDao.findItemByPanel(panelId);
+        return list;
     }
 }
