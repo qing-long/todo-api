@@ -62,8 +62,8 @@
                 <div class="div3"> <span th:text="${map2.name}"></span>
                     <span th:text="${map2.image}"></span>
                     <span th:text="${map2.description}"></span>
-                    <span><a href="add.html">添加</a></span>
-                    <span><a href="/DELETE/item">删除</a></span>
+                    <span><a th:href="@{/item/add}">添加</a></span>
+                    <span><a th:href="@{/item/delete/{id}(id=${map2.id})}">删除</a></span>
                 </div>
                 </li>
             </ol>

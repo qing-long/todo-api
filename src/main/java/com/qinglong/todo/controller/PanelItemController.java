@@ -94,8 +94,8 @@ public class PanelItemController {
         return piService.deleteAll(id);
     }
 
-    @RequestMapping(value="GET/panelitem",method = RequestMethod.GET)
-    public ModelAndView findPanelAndItem(){
+    @RequestMapping(value="/panelitem",method = RequestMethod.GET)
+    public String findPanelAndItem(){
         ModelAndView model=new ModelAndView("index");
         Map<Panel,List<Item>> map=new HashMap<>();
         List<Panel> panelList=panelService.findAll();
@@ -105,6 +105,6 @@ public class PanelItemController {
             map.put(panelList.get(i),itemList);
         }
         model.addObject("mapAll",map);
-        return model;
+        return map.toString();
     }
 }

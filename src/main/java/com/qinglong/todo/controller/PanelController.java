@@ -30,11 +30,10 @@ public class PanelController {
      * @return 返回Panel集合
      */
     @RequestMapping(value = "/panel", method = RequestMethod.GET)
-    public ModelAndView findAll()
-    {
-        ModelAndView model=new ModelAndView("index");
-        List<Panel> panelList=panelService.findAll();
-        model.addObject("panelList",panelList);
+    public ModelAndView findAll() {
+        ModelAndView model = new ModelAndView("index");
+        List<Panel> panelList = panelService.findAll();
+        model.addObject("panelList", panelList);
         return model;
     }
 
@@ -43,10 +42,10 @@ public class PanelController {
      */
 
     @RequestMapping(value = "/panel/{id}", method = RequestMethod.GET)
-    public ModelAndView findById(@PathVariable  int id) {
-        ModelAndView model=new ModelAndView("success");
-        Panel p= panelService.findById(id);
-        model.addObject("panel",p);
+    public ModelAndView findById(@PathVariable int id) {
+        ModelAndView model = new ModelAndView("success");
+        Panel p = panelService.findById(id);
+        model.addObject("panel", p);
         return model;
     }
 
@@ -55,11 +54,11 @@ public class PanelController {
      */
     @RequestMapping(value = "/panel", method = RequestMethod.POST)
     public ModelAndView add(Panel p) {
-        ModelAndView model=new ModelAndView("success");
-              panelService.add(p);
-            Panel panel=  panelService.findById(p.getId());
-              model.addObject("panel",panel);
-              return model;
+        ModelAndView model = new ModelAndView("success");
+        panelService.add(p);
+        Panel panel = panelService.findById(p.getId());
+        model.addObject("panel", panel);
+        return model;
     }
 
     /**
@@ -67,17 +66,17 @@ public class PanelController {
      */
     @RequestMapping(value = "/panel", method = RequestMethod.PUT)
     @ResponseBody
-    public String update( Panel p) {
-        System.out.println(p.getId()+","+p.getName()+","+p.getUpdateTime()+"1111111111111111111111111111");
-         panelService.update(p);
-         return "success";
+    public String update(Panel p) {
+        System.out.println(p.getId() + "," + p.getName() + "," + p.getUpdateTime() + "1111111111111111111111111111");
+        panelService.update(p);
+        return "success";
     }
 
     /**
      * 删除panel
      */
     @RequestMapping(value = "/panel/{id}", method = RequestMethod.DELETE)
-    public String delete(@PathVariable  int id) {
+    public String delete(@PathVariable int id) {
         panelService.delete(id);
         return "success";
     }
